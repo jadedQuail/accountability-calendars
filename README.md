@@ -45,3 +45,6 @@ Generated PDFs are saved to the `output/` folder.
 ```bash
 pytest test_generate.py -v
 ```
+
+### Disclaimer
+This app was largely vibe-coded using Claude Opus 4.6
