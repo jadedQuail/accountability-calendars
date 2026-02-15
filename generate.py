@@ -48,11 +48,8 @@ def _draw_header_row(pdf, x_start, y_start, col_widths, headers, has_total):
     row_h = 20
 
     for i, (header, w) in enumerate(zip(headers, col_widths)):
-        # Week column and TOTAL column get light blue; day columns get peach
-        if i == 0 or (has_total and i == len(headers) - 1):
-            pdf.set_fill_color(*COLOR_LIGHT_BLUE)
-        else:
-            pdf.set_fill_color(*COLOR_PEACH)
+        # All column headers are blue
+        pdf.set_fill_color(*COLOR_LIGHT_BLUE)
 
         pdf.rect(x, y_start, w, row_h, "FD")
         pdf.set_xy(x, y_start)
