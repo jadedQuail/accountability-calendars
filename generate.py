@@ -11,6 +11,9 @@ OUTPUT_DIR = os.path.join(SCRIPT_DIR, "output")
 
 DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
+# Font
+FONT_FAMILY = "Helvetica"
+
 # Header colors (RGB)
 COLOR_LIGHT_BLUE = (173, 216, 230)
 COLOR_PEACH = (255, 218, 185)
@@ -84,14 +87,14 @@ def _draw_week_row(pdf, x_start, y, col_widths, week_num, week_dates, row_h,
 
         # Date in top-right corner
         date_str = format_date(week_dates[day_idx])
-        pdf.set_font("Helvetica", "", 7)
+        pdf.set_font(FONT_FAMILY, "", 7)
         date_w = pdf.get_string_width(date_str)
         pdf.set_xy(x + w - date_w - 1, y + 5)
         pdf.cell(date_w, 5, date_str, align="R")
 
         # Workout label centered in cell (if applicable)
         if workout_labels:
-            pdf.set_font("Helvetica", "", 9)
+            pdf.set_font(FONT_FAMILY, "", 9)
             pdf.set_xy(x, y + 5)
             pdf.cell(w, row_h - 5, workout_labels[day_idx], align="C")
 
@@ -102,7 +105,7 @@ def _draw_week_row(pdf, x_start, y, col_widths, week_num, week_dates, row_h,
         w = col_widths[-1]
         pdf.rect(x, y, w, row_h, "D")
         if total_content:
-            pdf.set_font("Helvetica", "", 8)
+            pdf.set_font(FONT_FAMILY, "", 8)
             line_h = row_h / len(total_content)
             for li, line in enumerate(total_content):
                 pdf.set_xy(x + 2, y + li * line_h)
@@ -134,11 +137,11 @@ def _create_calendar_pdf(filename, headers, col_widths, week_dates_list,
     y_start = margin
 
     # Draw header
-    pdf.set_font("Helvetica", "B", 10)
+    pdf.set_font(FONT_FAMILY, "B", 10)
     _draw_header_row(pdf, x_start, y_start, col_widths, headers, has_total)
 
     # Draw week rows
-    pdf.set_font("Helvetica", "", 10)
+    pdf.set_font(FONT_FAMILY, "", 10)
     for week_idx, week_dates in enumerate(week_dates_list):
         y = y_start + header_h + week_idx * row_h
         total_content = total_content_fn(week_idx) if total_content_fn else None
