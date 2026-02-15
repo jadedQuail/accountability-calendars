@@ -7,7 +7,8 @@ from datetime import datetime, timedelta
 from fpdf import FPDF
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-OUTPUT_DIR = os.path.join(SCRIPT_DIR, "output")
+# Allow OUTPUT_DIR to be overridden via environment variable
+OUTPUT_DIR = os.environ.get("CALENDAR_OUTPUT_DIR", os.path.join(SCRIPT_DIR, "output"))
 
 DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
