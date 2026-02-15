@@ -63,7 +63,8 @@ def _draw_week_row(pdf, x_start, y, col_widths, week_num, week_dates, row_h,
     x = x_start
 
     # Week number column
-    pdf.rect(x, y, col_widths[0], row_h, "D")
+    pdf.set_fill_color(*COLOR_PEACH)
+    pdf.rect(x, y, col_widths[0], row_h, "FD")
     pdf.set_xy(x, y)
     pdf.cell(col_widths[0], row_h, str(week_num), align="C")
     x += col_widths[0]
