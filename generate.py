@@ -78,7 +78,7 @@ def _draw_week_row(pdf, x_start, y, col_widths, week_num, week_dates, row_h,
         date_str = format_date(week_dates[day_idx])
         pdf.set_font("Helvetica", "", 7)
         date_w = pdf.get_string_width(date_str)
-        pdf.set_xy(x + w - date_w - 1, y + 1)
+        pdf.set_xy(x + w - date_w - 1, y + 5)
         pdf.cell(date_w, 5, date_str, align="R")
 
         # Workout label centered in cell (if applicable)
