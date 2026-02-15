@@ -1,2 +1,13 @@
 .vscode/
 output/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Testing
+.pytest_cache/
+
+# Claude Code
+.claude/

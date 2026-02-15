@@ -16,6 +16,14 @@ COLOR_LIGHT_BLUE = (173, 216, 230)
 COLOR_PEACH = (255, 218, 185)
 
 
+def get_next_monday():
+    """Get the next Monday from today (or today if it's already Monday)."""
+    today = datetime.today()
+    # weekday() returns 0 for Monday
+    days_ahead = (7 - today.weekday()) % 7
+    return today + timedelta(days=days_ahead)
+
+
 def validate_date(date_str):
     """Validate date string is MM/DD/YYYY format and a Monday. Returns datetime or raises ValueError."""
     try:
@@ -184,12 +192,25 @@ def generate_workouts(start_date, workout_labels):
 
 def prompt_date():
     """Prompt the user for a valid Monday start date."""
+    next_monday = get_next_monday()
+    next_monday_str = next_monday.strftime("%m/%d/%Y")
+
     while True:
-        date_str = input("Enter start date (MM/DD/YYYY, must be a Monday): ").strip()
-        try:
-            return validate_date(date_str)
-        except ValueError as e:
-            print(f"  Error: {e}")
+        print("\nChoose start date:")
+        print(f"  1. Use next Monday ({next_monday_str})")
+        print("  2. Enter a custom Monday")
+        choice = input("Enter choice (1 or 2): ").strip()
+
+        if choice == "1":
+            return next_monday
+        elif choice == "2":
+            date_str = input("Enter start date (MM/DD/YYYY, must be a Monday): ").strip()
+            try:
+                return validate_date(date_str)
+            except ValueError as e:
+                print(f"  Error: {e}")
+        else:
+            print("  Error: Invalid choice. Please enter 1 or 2.")
 
 
 def prompt_calendars():

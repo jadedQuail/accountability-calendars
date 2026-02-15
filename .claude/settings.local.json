@@ -8,7 +8,9 @@
       "Bash(/c/Users/Josh/AppData/Local/Microsoft/WindowsApps/python.exe:*)",
       "Bash(ls:*)",
       "Bash(/c/Users/Josh/AppData/Local/Programs/Python/Python312/python.exe -m pip install:*)",
-      "Bash(/c/Users/Josh/AppData/Local/Programs/Python/Python312/python.exe -m pytest:*)"
+      "Bash(/c/Users/Josh/AppData/Local/Programs/Python/Python312/python.exe -m pytest:*)",
+      "Bash(python -c:*)",
+      "Bash(pytest:*)"
     ]
   }
 }
